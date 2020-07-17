@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for in demo</title>
+</head>
+<body>
+    <ul>
+        {% for book in books %}
+                <li>{{ book }}</li>
+        {% endfor %}
+
+    </ul>
+
+
+    <hr>
+
+    <ul>
+        {% for key,value in persons.items %}
+
+            <li>{{ key }}/{{ value }}</li>
+        {% endfor %}
+
+    </ul>
+
+    <hr>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booked in bookses %}
+                {% if forloop.first %}
+                    <tr style="background: yellow">
+                {% elif forloop.last %}
+                    <tr style="background: pink">
+                {% else %}
+                    <tr>
+                {% endif %}
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ booked.name }}</td>
+                    <td>{{ booked.author }}</td>
+                    <td>{{ booked.price }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <hr>
+    {% for comment in comments %}
+        <li>{{ comment }}</li>
+        {% empty %}
+        <li>这个人真懒，一句话都不想说</li>
+    {% endfor %}
+
+</body>
+</html>
